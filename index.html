@@ -279,6 +279,11 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
 .tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:13px}
 .tag.y{background:#e9f5e4;color:#2f6b2a}.tag.n{background:#fbe9e5;color:#9c3b2a}.tag.p{background:#f3eee2;color:#8b7550}
 .lnk{font-size:12px;color:#8b7550;word-break:break-all}
+.seg{display:inline-flex;border:1px solid rgba(176,138,62,.45);border-radius:14px;overflow:hidden}
+.seg button{padding:6px 10px;font-size:13px;color:#7a6542;background:#fff;border-right:1px solid rgba(176,138,62,.25)}
+.seg button:last-child{border-right:0}
+.seg button.on.y{background:#e9f5e4;color:#2f6b2a;font-weight:600}.seg button.on.n{background:#fbe9e5;color:#9c3b2a;font-weight:600}.seg button.on.p{background:#f3eee2;color:#8b7550;font-weight:600}
+.cnt{font:inherit;padding:3px 6px;border-radius:8px;border:1px solid rgba(176,138,62,.45)}
 .copy{font-size:12px;color:var(--gold-d);border:1px solid rgba(176,138,62,.5);border-radius:12px;padding:3px 9px;margin-left:4px}
 
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
@@ -873,26 +878,47 @@ function burst(){const r=$("#thanks").getBoundingClientRect();for(let i=0;i<90;i
   for(let i=0;i<24;i++){spawn({kind:"petal",x:r.left+r.width/2,y:r.top+40,vx:(Math.random()-.5)*6,vy:-Math.random()*5,decay:.006,s:6+Math.random()*6,rot:Math.random()*6,vr:(Math.random()-.5)*.2,col:"#fff6ea"});}}
 
 /* =================== ADMIN (couple's panel) =================== */
+async function api(fn,body){const r=await fetch(CONFIG.apiUrl+"/rest/v1/rpc/"+fn,{method:"POST",headers:{"Content-Type":"application/json",apikey:CONFIG.apiKey,Authorization:"Bearer "+CONFIG.apiKey},body:JSON.stringify(body)});if(!r.ok)throw new Error(await r.text());return r.json();}
 async function admin(key){
   document.body.classList.add("admin");document.body.classList.remove("locked");$("#intro").remove();$("#main").remove();$(".ctrl").remove();mode="none";
+  $("#admMsg").textContent="Puedes cambiar la respuesta de cualquier invitado con los botones. Se guarda al instante.";
   let rows=[];
-  try{const r=await fetch(CONFIG.apiUrl+"/rest/v1/rpc/rsvp_list",{method:"POST",headers:{"Content-Type":"application/json",apikey:CONFIG.apiKey,Authorization:"Bearer "+CONFIG.apiKey},body:JSON.stringify({p_key:key})});
-    if(!r.ok) throw 0; rows=await r.json();}catch(e){$("#admMsg").textContent="No se pudo cargar (revisa la clave del link).";}
-  const by={};rows.forEach(r=>by[r.code]=r);
+  try{rows=await api("rsvp_list",{p_key:key});}catch(e){$("#admMsg").textContent="No se pudo cargar (revisa la clave del link).";return;}
+  const by={};rows.forEach(r=>{if(r.answer)by[r.code]=r;});
   const base=location.origin+location.pathname;
-  let yes=0,no=0,pend=0,ppl=0,tot=0;
-  $("#rows").innerHTML=Object.entries(GUESTS).map(([c,g])=>{const r=by[c];tot+=g.p;
-    let tag='<span class="tag p">Pendiente</span>',n="—",d="";
-    if(r){d=new Date(r.updated_at).toLocaleString("es");if(r.answer==="si"){yes++;ppl+=r.attending;tag='<span class="tag y">Sí asiste</span>';n=r.attending;}else{no++;tag='<span class="tag n">No asiste</span>';n=0;}}else pend++;
-    const link=base+"?i="+c;
-    return `<tr><td>${esc(g.n)}</td><td>${g.p}</td><td>${tag}</td><td>${n}</td><td style="font-size:13px">${d}</td><td><button class="copy" data-l="${link}">Copiar</button></td></tr>`;}).join("");
-  $("#stats").innerHTML=`<div><b>${yes}</b><span>Confirmaron</span></div><div><b>${ppl}/${tot}</b><span>Personas que asisten</span></div><div><b>${no}</b><span>No asistirán</span></div><div><b>${pend}</b><span>Pendientes</span></div>`;
-  document.querySelectorAll(".copy").forEach(b=>b.onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(b.dataset.l);b.textContent="¡Copiado!";});
+  function render(){
+    let yes=0,no=0,pend=0,ppl=0,tot=0;
+    $("#rows").innerHTML=Object.entries(GUESTS).map(([c,g])=>{const r=by[c];tot+=g.p;
+      const a=r?r.answer:"p", n=r&&r.answer==="si"?r.attending:0, d=r&&r.updated_at?new Date(r.updated_at).toLocaleString("es"):"";
+      if(a==="si"){yes++;ppl+=n;}else if(a==="no")no++;else pend++;
+      const cnt=a==="si"&&g.p>1?`<select class="cnt" data-c="${c}">${Array.from({length:g.p},(_,k)=>`<option ${k+1===n?"selected":""}>${k+1}</option>`).join("")}</select>`:(a==="si"?n:"—");
+      return `<tr><td>${esc(g.n)}</td><td>${g.p}</td><td><div class="seg" data-c="${c}">
+        <button data-a="si" class="${a==="si"?"on y":""}">Sí</button><button data-a="no" class="${a==="no"?"on n":""}">No</button><button data-a="pendiente" class="${a==="p"?"on p":""}">Pendiente</button></div></td>
+        <td>${cnt}</td><td style="font-size:13px">${d}</td><td><button class="copy" data-l="${base}?i=${c}">Copiar</button></td></tr>`;}).join("");
+    $("#stats").innerHTML=`<div><b>${yes}</b><span>Confirmaron</span></div><div><b>${ppl}/${tot}</b><span>Personas que asisten</span></div><div><b>${no}</b><span>No asistirán</span></div><div><b>${pend}</b><span>Pendientes</span></div>`;
+    document.querySelectorAll(".copy").forEach(b=>b.onclick=()=>{try{navigator.clipboard.writeText(b.dataset.l).catch(()=>{});}catch(e){}b.textContent="¡Copiado!";});
+    document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>save(b.parentNode.dataset.c,b.dataset.a,by[b.parentNode.dataset.c]?.attending||GUESTS[b.parentNode.dataset.c].p));
+    document.querySelectorAll(".cnt").forEach(sel=>sel.onchange=()=>save(sel.dataset.c,"si",+sel.value));
+  }
+  async function save(c,a,n){
+    $("#admMsg").textContent="Guardando…";
+    try{await api("rsvp_admin_set",{p_key:key,p_code:c,p_answer:a,p_count:n});
+      if(a==="pendiente")delete by[c];else by[c]={code:c,answer:a,attending:a==="si"?Math.min(Math.max(1,n),GUESTS[c].p):0,updated_at:new Date().toISOString()};
+      render();$("#admMsg").textContent="Guardado: "+GUESTS[c].n+" → "+(a==="si"?"Sí asiste":a==="no"?"No asiste":"Pendiente");
+    }catch(e){$("#admMsg").textContent="No se pudo guardar. Revisa tu conexión e intenta de nuevo.";}
+  }
+  render();
+}
+/* keep the guest page in sync with the panel (e.g. answer changed or reset by the couple) */
+async function syncAnswer(){
+  if(!guest||!CONFIG.apiUrl)return;
+  try{const st=await api("rsvp_status",{p_code:code});
+    answer=st&&st.answer?{a:st.answer,n:st.attending,at:Date.now()}:null; store.set("er-rsvp-"+code,answer); renderThanks();}catch(e){}
 }
 
 /* =================== BOOT =================== */
 if(qs.get("panel")) admin(qs.get("panel"));
-else { applyLang(); if(store.get("er-music")===false){musicOn=false;$("#musicBtn").classList.add("off");}
+else { applyLang(); syncAnswer(); if(store.get("er-music")===false){musicOn=false;$("#musicBtn").classList.add("off");}
   if(qs.get("skip")==="1"){stage=4;enterMain();} else { const go=()=>setTimeout(startIntro,500); (document.fonts&&document.fonts.ready)?document.fonts.ready.then(go):go(); } }
 </script>
 </body>
