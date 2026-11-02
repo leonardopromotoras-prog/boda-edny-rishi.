@@ -11,6 +11,8 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f7f0e2">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -58,44 +60,45 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 .cloud i{position:absolute;border-radius:50%;background:radial-gradient(circle at 45% 38%,#fff 0%,#fffefb 42%,rgba(250,242,226,.9) 62%,rgba(250,242,226,0) 71%)}
 .cloud.drift{animation:drift var(--d,40s) ease-in-out infinite alternate}
 @keyframes drift{from{translate:-3vw 0}to{translate:3vw 0}}
-.gatesWrap{position:absolute;left:50%;top:47%;width:min(76vw,44vh);aspect-ratio:200/290;transform:translate(-50%,-50%) scale(.2);opacity:0;
+.gatesWrap{position:absolute;left:50%;top:52%;width:min(112vw,66vh);aspect-ratio:200/290;transform:translate(-50%,-50%) scale(.2);opacity:0;
   transition:transform 4.6s cubic-bezier(.35,0,.25,1),opacity 1.6s}
 .gatesWrap.show{opacity:1}
 .heaven.approach .gatesWrap{transform:translate(-50%,-50%) scale(1)}
 .heaven .gatesWrap.enter{transition:transform 2.3s cubic-bezier(.6,0,.9,.35);transform:translate(-50%,-50%) scale(6.5)}
-.gates{position:absolute;left:0;right:0;bottom:0;top:17%;perspective:1100px}
+.gates{position:absolute;left:4%;right:4%;bottom:0;top:17%;perspective:1300px}
 .gates .glow{position:absolute;inset:3% 2% 0;border-radius:50% 50% 0 0/24% 24% 0 0;opacity:.8;transition:opacity 1.6s;
   background:radial-gradient(60% 55% at 50% 42%,#fff 0%,#fffbf0 38%,#ffecc0 72%,rgba(255,226,165,.7) 100%)}
 .gates.open .glow{opacity:1}
 .gleaf{position:absolute;top:0;bottom:0;width:50%;transition:transform 2.8s cubic-bezier(.5,0,.22,1)}
-.gleaf svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 0 3px rgba(255,214,130,.9)) drop-shadow(0 4px 6px rgba(140,100,35,.35))}
+.gleaf svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 0 2px rgba(255,236,180,.9)) drop-shadow(1px 3px 3px rgba(110,75,20,.45)) drop-shadow(0 10px 18px rgba(140,100,35,.25))}
 .gleaf.l{left:0;transform-origin:0 50%}.gleaf.r{right:0;transform-origin:100% 50%}
 .gleaf.r svg{transform:scaleX(-1)}
 .gates.open .gleaf.l{transform:rotateY(-112deg)}.gates.open .gleaf.r{transform:rotateY(112deg)}
-.crown{position:absolute;left:-7%;right:-7%;top:0;height:24%}
+.crown{position:absolute;left:0;right:0;top:0;height:24%}
 .crown svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 4px rgba(255,214,130,.9)) drop-shadow(0 3px 5px rgba(140,100,35,.3))}
-.pil{position:absolute;bottom:0;width:9%;height:84%;border-radius:3px 3px 0 0;
+.pil{position:absolute;bottom:0;width:8%;height:86%;border-radius:3px 3px 0 0;
   background:linear-gradient(90deg,#c9a14e,#fbe9b6 45%,#d9b25e 60%,#a37c30);box-shadow:0 0 10px rgba(255,214,130,.6)}
 .pil::before{content:"";position:absolute;left:-30%;right:-30%;top:-2.5%;height:3.5%;border-radius:3px;background:linear-gradient(#fbe9b6,#c49a45)}
-.pil.l{left:-12%}.pil.r{right:-12%}
+.pil.l{left:-4%}.pil.r{right:-4%}
 .gate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;padding:16px;overflow:hidden;
   background:radial-gradient(70% 55% at 50% 45%,#fffefb 0%,#fbf6ea 55%,#f4ead6 100%);transition:opacity 1.3s ease,filter 1.3s ease,transform 1.6s ease}
 .gate.fade{opacity:0;filter:blur(6px);transform:scale(1.08);pointer-events:none}
-.cflor{position:absolute;width:min(60vw,340px);pointer-events:none;filter:drop-shadow(0 6px 10px rgba(140,100,35,.18));opacity:0;animation:florIn 2.2s ease .4s forwards, florSway 7s ease-in-out 2.6s infinite alternate}
-.cflor.tl{left:-6vw;top:-4vh;transform-origin:0 0}
-.cflor.br{right:-6vw;bottom:-4vh;transform-origin:50% 50%;rotate:180deg}
 @keyframes florIn{from{opacity:0;scale:.85}to{opacity:1;scale:1}}
 @keyframes florSway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.2deg)}}
 .gcenter{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}
 .mono3d{width:min(64vw,290px);aspect-ratio:1;position:relative;perspective:1000px;container-type:inline-size;cursor:pointer;-webkit-tap-highlight-color:transparent;
   animation:flyIn 2.8s cubic-bezier(.16,.8,.24,1) both}
 @keyframes flyIn{from{opacity:0;transform:translateY(-18vh) scale(.08)}20%{opacity:1}to{opacity:1;transform:none}}
-.later{display:flex;flex-direction:column;align-items:center;opacity:0;animation:rise 1.4s cubic-bezier(.2,.7,.2,1) 2.5s forwards}
+.later{display:flex;flex-direction:column;align-items:center}
+.gcenter .later .for{clip-path:inset(0 50% 0 50%);opacity:0;animation:unveil 1.8s cubic-bezier(.2,.7,.2,1) 2.6s forwards,gshine 6s linear infinite}
+@keyframes unveil{0%{clip-path:inset(0 50% 0 50%);opacity:0;letter-spacing:.2em}100%{clip-path:inset(-20% -10% -20% -10%);opacity:1;letter-spacing:0}}
+.later .invite{font-family:var(--serif);font-style:italic;font-size:clamp(20px,5.6vw,26px);color:#6b5634;margin-top:8px;max-width:22ch;line-height:1.35;opacity:0;animation:rise 1.4s ease 4s forwards}
+.later .openBtn{opacity:0;animation:rise 1.2s ease 5s forwards,breathe 2.4s ease-in-out 6.2s infinite}
 .gcenter .for{margin-top:26px;font-family:var(--script);font-size:clamp(38px,11vw,56px);line-height:1.2;padding:0 .5em;
   background:linear-gradient(100deg,#8a6a22 0%,#b8913d 25%,#f0d796 42%,#b8913d 58%,#8a6a22 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gshine 6s linear infinite}
 .openBtn{margin-top:22px;padding:15px 38px;border-radius:40px;font-family:var(--caps);letter-spacing:.3em;font-size:14px;color:#fff;
   background:linear-gradient(135deg,#dcbb6a,#b08a3e 50%,#d6b260 75%,#9a7631);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),0 10px 28px -8px rgba(138,106,34,.6);
-  text-shadow:0 1px 2px rgba(90,60,10,.35);animation:breathe 2.4s ease-in-out infinite}
+  text-shadow:0 1px 2px rgba(90,60,10,.35)}
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .mono3d .halo{position:absolute;inset:-28%;border-radius:50%;background:radial-gradient(circle,#fff 0%,rgba(255,248,226,.9) 30%,rgba(255,236,190,0) 66%);animation:pulse 3.4s ease-in-out infinite}
 .mono3d .ring{position:absolute;inset:-3%;border-radius:50%;border:1.5px solid rgba(184,145,61,.6);box-shadow:0 0 22px rgba(230,190,110,.35),inset 0 0 22px rgba(230,190,110,.25)}
@@ -120,8 +123,6 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 .icontent .for strong{display:block;font-style:normal;font-family:var(--script);font-size:8.5cqw;color:#8a6a22;font-weight:400;margin-top:.5cqw;padding:0 .4em}
 .mono3d.whirl .m3{animation:whirl 1.7s cubic-bezier(.3,0,.2,1)}
 @keyframes whirl{from{transform:rotateY(0)}to{transform:rotateY(720deg)}}
-.flor{position:absolute;top:-14%;width:44%;-webkit-mask-image:radial-gradient(ellipse 62% 52% at 42% 38%,#000 55%,transparent 85%);mask-image:radial-gradient(ellipse 62% 52% at 42% 38%,#000 55%,transparent 85%);pointer-events:none;z-index:2;filter:drop-shadow(0 4px 8px rgba(140,100,35,.2))}
-.flor.l{left:-30%}.flor.r{right:-30%;transform:scaleX(-1)}
 .gatesWrap{container-type:inline-size}
 .gatesWrap .glints{position:absolute;inset:0;z-index:3;pointer-events:none}
 .soundHint{animation:ring 1.6s ease-in-out infinite}
@@ -287,7 +288,6 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
     <div class="rays2"></div>
     <div id="cloudsBack"></div>
     <div class="gatesWrap" id="gatesWrap">
-      <img class="flor l" src="flores.webp" alt=""><img class="flor r" src="flores.webp" alt="">
       <div class="glints" id="gglints"></div>
       <div class="crown"><svg viewBox="0 0 200 60" aria-hidden="true"><use href="#crownSym"/></svg></div>
       <div class="gates" id="gates">
@@ -300,7 +300,6 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
     <div id="cloudsFront"></div>
   </div>
   <div class="gate" id="gate">
-    <img class="cflor tl" src="flores.webp" alt=""><img class="cflor br" src="flores.webp" alt="">
     <div class="gcenter">
       <div class="mono3d" id="mono3d" role="button" aria-label="E y R">
         <div class="halo"></div><div class="ring"></div><div class="ring r2"></div>
@@ -308,6 +307,7 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
       </div>
       <div class="later">
         <div class="for" id="forLine"></div>
+        <div class="invite" data-t="invite"></div>
         <button class="openBtn" id="openBtn" data-t="open"></button>
       </div>
     </div>
@@ -533,7 +533,7 @@ const GUESTS = {
 /* =================== TEXTS =================== */
 const T = {
  es:{
-  open:"INVITACIÓN", kick:"NUESTRA BODA", sound:"Sube el volumen · Toca las iniciales", skip:"SALTAR ›",
+  open:"ABRIR INVITACIÓN", invite:"Queremos invitarte a nuestra boda", kick:"NUESTRA BODA", sound:"Sube el volumen · Toca las iniciales", skip:"SALTAR ›",
   forPre:"Una invitación especial para", forGeneric:"Tienes una invitación especial",
   verse:"“Así que ya no son dos, sino una sola carne. Por tanto, lo que Dios ha unido, que no lo separe el hombre.”<small>MATEO 19:6</small>",
   hdr:"JUNTO CON SUS FAMILIAS<br>TIENEN EL HONOR DE INVITARLE<br>A SU MATRIMONIO RELIGIOSO", and:"Y",
@@ -558,7 +558,7 @@ const T = {
   calTitle:"Boda de Edny & Rishi",
  },
  en:{
-  open:"INVITATION", kick:"OUR WEDDING", sound:"Turn up the volume · Tap the initials", skip:"SKIP ›",
+  open:"OPEN INVITATION", invite:"We would love to invite you to our wedding", kick:"OUR WEDDING", sound:"Turn up the volume · Tap the initials", skip:"SKIP ›",
   forPre:"A special invitation for", forGeneric:"You have a special invitation",
   verse:"“So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.”<small>MATTHEW 19:6</small>",
   hdr:"TOGETHER WITH THEIR FAMILIES<br>REQUEST THE HONOUR OF YOUR PRESENCE<br>AT THEIR RELIGIOUS WEDDING", and:"&amp;",
