@@ -78,18 +78,31 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
   background:linear-gradient(90deg,#c9a14e,#fbe9b6 45%,#d9b25e 60%,#a37c30);box-shadow:0 0 10px rgba(255,214,130,.6)}
 .pil::before{content:"";position:absolute;left:-30%;right:-30%;top:-2.5%;height:3.5%;border-radius:3px;background:linear-gradient(#fbe9b6,#c49a45)}
 .pil.l{left:-12%}.pil.r{right:-12%}
-.gate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;padding:16px}
-.icard{position:relative;width:min(94vw,calc(86vh*0.6667));aspect-ratio:1024/1536;max-width:100%;border-radius:8px;container-type:inline-size;
-  background:#faf6ee url("fondo.jpg") center/cover no-repeat;box-shadow:0 30px 60px -22px rgba(110,80,25,.4),0 0 60px rgba(255,236,190,.5);
-  animation:cardIn 1.4s cubic-bezier(.2,.7,.2,1) backwards;transition:transform 2.2s cubic-bezier(.55,0,.75,.35),opacity 1.9s ease-in}
-.icard.recede{transform:translateY(-3vh) scale(.05);opacity:0}
-.icontent{position:absolute;left:17%;width:70%;top:9%;height:72%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.mono3d{width:40cqw;aspect-ratio:1;position:relative;perspective:900px;margin-bottom:5cqw;container-type:inline-size;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;padding:16px;overflow:hidden;
+  background:radial-gradient(70% 55% at 50% 45%,#fffefb 0%,#fbf6ea 55%,#f4ead6 100%);transition:opacity 1.3s ease,filter 1.3s ease,transform 1.6s ease}
+.gate.fade{opacity:0;filter:blur(6px);transform:scale(1.08);pointer-events:none}
+.cflor{position:absolute;width:min(60vw,340px);pointer-events:none;filter:drop-shadow(0 6px 10px rgba(140,100,35,.18));opacity:0;animation:florIn 2.2s ease .4s forwards, florSway 7s ease-in-out 2.6s infinite alternate}
+.cflor.tl{left:-6vw;top:-4vh;transform-origin:0 0}
+.cflor.br{right:-6vw;bottom:-4vh;transform-origin:50% 50%;rotate:180deg}
+@keyframes florIn{from{opacity:0;scale:.85}to{opacity:1;scale:1}}
+@keyframes florSway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.2deg)}}
+.gcenter{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}
+.mono3d{width:min(64vw,290px);aspect-ratio:1;position:relative;perspective:1000px;container-type:inline-size;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  animation:flyIn 2.8s cubic-bezier(.16,.8,.24,1) both}
+@keyframes flyIn{from{opacity:0;transform:translateY(-18vh) scale(.08)}20%{opacity:1}to{opacity:1;transform:none}}
+.later{display:flex;flex-direction:column;align-items:center;opacity:0;animation:rise 1.4s cubic-bezier(.2,.7,.2,1) 2.5s forwards}
+.gcenter .for{margin-top:26px;font-family:var(--script);font-size:clamp(38px,11vw,56px);line-height:1.2;padding:0 .5em;
+  background:linear-gradient(100deg,#8a6a22 0%,#b8913d 25%,#f0d796 42%,#b8913d 58%,#8a6a22 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gshine 6s linear infinite}
+.openBtn{margin-top:22px;padding:15px 38px;border-radius:40px;font-family:var(--caps);letter-spacing:.3em;font-size:14px;color:#fff;
+  background:linear-gradient(135deg,#dcbb6a,#b08a3e 50%,#d6b260 75%,#9a7631);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),0 10px 28px -8px rgba(138,106,34,.6);
+  text-shadow:0 1px 2px rgba(90,60,10,.35);animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .mono3d .halo{position:absolute;inset:-28%;border-radius:50%;background:radial-gradient(circle,#fff 0%,rgba(255,248,226,.9) 30%,rgba(255,236,190,0) 66%);animation:pulse 3.4s ease-in-out infinite}
 .mono3d .ring{position:absolute;inset:-3%;border-radius:50%;border:1.5px solid rgba(184,145,61,.6);box-shadow:0 0 22px rgba(230,190,110,.35),inset 0 0 22px rgba(230,190,110,.25)}
 .mono3d .ring.r2{inset:5%;border:1px dashed rgba(184,145,61,.55);box-shadow:none;animation:spin 34s linear infinite}
 .mono3d .tilt{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s ease-out}
-.m3{position:absolute;inset:0;transform-style:preserve-3d;animation:twirl 4.2s cubic-bezier(.6,0,.3,1) infinite}
+.m3{position:absolute;inset:0;transform-style:preserve-3d;animation:spinIn 2.8s cubic-bezier(.2,.6,.3,1),twirl 4.2s cubic-bezier(.6,0,.3,1) 2.8s infinite}
+@keyframes spinIn{from{transform:rotateY(-1080deg)}to{transform:rotateY(0)}}
 @keyframes twirl{0%{transform:rotateY(0) rotateX(6deg)}45%{transform:rotateY(360deg) rotateX(-4deg)}62%{transform:rotateY(380deg) rotateX(4deg)}80%{transform:rotateY(345deg) rotateX(-2deg)}100%{transform:rotateY(360deg) rotateX(6deg)}}
 .lay{position:absolute;inset:0;pointer-events:none}
 .lay b{position:absolute;font-family:var(--serif);font-weight:500;line-height:1;font-size:52cqw}
@@ -107,8 +120,8 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 .icontent .for strong{display:block;font-style:normal;font-family:var(--script);font-size:8.5cqw;color:#8a6a22;font-weight:400;margin-top:.5cqw;padding:0 .4em}
 .mono3d.whirl .m3{animation:whirl 1.7s cubic-bezier(.3,0,.2,1)}
 @keyframes whirl{from{transform:rotateY(0)}to{transform:rotateY(720deg)}}
-.flor{position:absolute;top:-6%;width:46%;pointer-events:none;z-index:2;filter:drop-shadow(0 4px 8px rgba(140,100,35,.2))}
-.flor.l{left:-26%}.flor.r{right:-26%;transform:scaleX(-1)}
+.flor{position:absolute;top:-14%;width:44%;-webkit-mask-image:radial-gradient(ellipse 62% 52% at 42% 38%,#000 55%,transparent 85%);mask-image:radial-gradient(ellipse 62% 52% at 42% 38%,#000 55%,transparent 85%);pointer-events:none;z-index:2;filter:drop-shadow(0 4px 8px rgba(140,100,35,.2))}
+.flor.l{left:-30%}.flor.r{right:-30%;transform:scaleX(-1)}
 .gatesWrap{container-type:inline-size}
 .gatesWrap .glints{position:absolute;inset:0;z-index:3;pointer-events:none}
 .soundHint{animation:ring 1.6s ease-in-out infinite}
@@ -287,17 +300,15 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
     <div id="cloudsFront"></div>
   </div>
   <div class="gate" id="gate">
-    <div class="icard" id="icard">
-      <div class="glints" id="iglints"></div>
-      <div class="icontent">
-        <div class="mono3d" id="mono3d" role="button" aria-label="E y R">
-          <div class="halo"></div><div class="ring"></div><div class="ring r2"></div>
-          <div class="tilt" id="tilt"><div class="m3" id="m3"></div></div>
-        </div>
-        <div class="kick" data-t="kick"></div>
-        <h1>Edny &amp; Rishi</h1>
-        <div class="date">05 · 12 · 2026</div>
+    <img class="cflor tl" src="flores.webp" alt=""><img class="cflor br" src="flores.webp" alt="">
+    <div class="gcenter">
+      <div class="mono3d" id="mono3d" role="button" aria-label="E y R">
+        <div class="halo"></div><div class="ring"></div><div class="ring r2"></div>
+        <div class="tilt" id="tilt"><div class="m3" id="m3"></div></div>
+      </div>
+      <div class="later">
         <div class="for" id="forLine"></div>
+        <button class="openBtn" id="openBtn" data-t="open"></button>
       </div>
     </div>
   </div>
@@ -312,6 +323,7 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
     <linearGradient id="gGate" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff4cf"/><stop offset=".35" stop-color="#e2bf6a"/><stop offset=".65" stop-color="#c39a45"/><stop offset="1" stop-color="#f6e2a6"/></linearGradient>
     <clipPath id="leafClip"><path d="M3 228V64Q3 12 97 5V228Z"/></clipPath>
     <symbol id="leafSym" viewBox="0 0 100 230">
+      <path d="M3 228V64Q3 12 97 5V228Z" fill="rgba(255,251,242,.38)"/>
       <g clip-path="url(#leafClip)" fill="none" stroke="url(#gGate)">
         <path stroke-width="2.4" d="M15 0V228M27 0V228M39 0V228M51 0V228M63 0V228M75 0V228M87 0V228"/>
         <path stroke-width="3" d="M0 126H100M0 192H100M0 214H100"/>
@@ -521,7 +533,7 @@ const GUESTS = {
 /* =================== TEXTS =================== */
 const T = {
  es:{
-  open:"ABRIR INVITACIÓN", kick:"NUESTRA BODA", sound:"Sube el volumen · Toca las iniciales", skip:"SALTAR ›",
+  open:"INVITACIÓN", kick:"NUESTRA BODA", sound:"Sube el volumen · Toca las iniciales", skip:"SALTAR ›",
   forPre:"Una invitación especial para", forGeneric:"Tienes una invitación especial",
   verse:"“Así que ya no son dos, sino una sola carne. Por tanto, lo que Dios ha unido, que no lo separe el hombre.”<small>MATEO 19:6</small>",
   hdr:"JUNTO CON SUS FAMILIAS<br>TIENEN EL HONOR DE INVITARLE<br>A SU MATRIMONIO RELIGIOSO", and:"Y",
@@ -546,7 +558,7 @@ const T = {
   calTitle:"Boda de Edny & Rishi",
  },
  en:{
-  open:"OPEN INVITATION", kick:"OUR WEDDING", sound:"Turn up the volume · Tap the initials", skip:"SKIP ›",
+  open:"INVITATION", kick:"OUR WEDDING", sound:"Turn up the volume · Tap the initials", skip:"SKIP ›",
   forPre:"A special invitation for", forGeneric:"You have a special invitation",
   verse:"“So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.”<small>MATTHEW 19:6</small>",
   hdr:"TOGETHER WITH THEIR FAMILIES<br>REQUEST THE HONOUR OF YOUR PRESENCE<br>AT THEIR RELIGIOUS WEDDING", and:"&amp;",
@@ -586,7 +598,7 @@ function applyLang(){
   const t=T[lang]; document.documentElement.lang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>{const v=t[el.dataset.t]; if(typeof v==="string") el.innerHTML=v;});
   document.querySelectorAll("#langBtn b").forEach(b=>{b.style.opacity=b.dataset.l===lang?1:.45});
-  $("#forLine").innerHTML = guest ? `${t.forPre}<strong>${esc(guest.n)}</strong>` : t.forGeneric;
+  $("#forLine").textContent = guest ? guest.n : "Edny & Rishi";
   const p = guest?guest.p:1;
   $("#cardGuest .gn").textContent = guest?guest.n:"";
   $("#cardGuest .gp").textContent = guest?(p>1?t.passN(p):t.pass1):"";
@@ -747,7 +759,6 @@ function later(ms,fn){timers.push(setTimeout(fn,ms));}
 function running(){return ac&&ac.state==="running";}
 function soundStage(){ // play what belongs to the current moment once sound is allowed
   if(!running())return;
-  $("#musicBtn").classList.remove("soundHint");
   if(!bellsDone&&stage<3){bellsDone=true;peal();}
 }
 function unlock(){ // first touch anywhere: sound + vibration
@@ -756,19 +767,23 @@ function unlock(){ // first touch anywhere: sound + vibration
   if(ac) ac.resume().then(()=>{soundStage(); if(stage>=4) startMusic();});
 }
 ["pointerdown","touchend","keydown"].forEach(ev=>addEventListener(ev,unlock,{passive:true}));
-function startIntro(){
+function startIntro(){ // initials fly in; try bells (phones may need the tap)
   if(stage)return; stage=1; mode="intro";
-  initAudio(); $("#musicBtn").classList.add("show");
-  if(ac){ ac.resume().then(soundStage).catch(()=>{}); setTimeout(()=>{ if(!running()) $("#musicBtn").classList.add("soundHint"); },700); }
-  $("#skipBtn").classList.add("show");
-  later(4800,()=>{stage=2;mode="opening";$("#icard").classList.add("recede");$("#gatesWrap").classList.add("show");});
-  later(5400,()=>{mode="heaven";$("#heaven").classList.add("approach");
-    document.querySelectorAll("#cloudsFront .cloud").forEach(c=>{c.style.transform=`translate(${c.dataset.dx}vw,${c.dataset.dy}vh) scale(2.4)`;c.style.opacity=0;});});
-  later(9800,()=>{stage=3;$("#gates").classList.add("open");$("#heaven").classList.add("open");if(running())doorChime();buzz(120);});
-  later(11500,()=>{$("#gatesWrap").classList.add("enter");});
-  later(12300,()=>{stage=4;$("#flash").classList.add("on");startMusic();});
-  later(13700,enterMain);
+  initAudio(); if(ac) ac.resume().then(soundStage).catch(()=>{});
 }
+$("#openBtn").onclick=()=>{
+  if(stage!==1)return; stage=2; mode="opening";
+  initAudio(); buzz([90,60,160]);
+  if(ac) ac.resume().then(()=>{ if(!bellsDone){bellsDone=true;peal();} });
+  whirl(); $("#skipBtn").classList.add("show");
+  later(700,()=>{$("#gate").classList.add("fade");$("#gatesWrap").classList.add("show");});
+  later(1300,()=>{mode="heaven";$("#heaven").classList.add("approach");
+    document.querySelectorAll("#cloudsFront .cloud").forEach(c=>{c.style.transform=`translate(${c.dataset.dx}vw,${c.dataset.dy}vh) scale(2.4)`;c.style.opacity=0;});});
+  later(5600,()=>{stage=3;$("#gates").classList.add("open");$("#heaven").classList.add("open");if(running())doorChime();buzz(120);});
+  later(7300,()=>{$("#gatesWrap").classList.add("enter");});
+  later(8100,()=>{stage=4;$("#flash").classList.add("on");startMusic();});
+  later(9500,enterMain);
+};
 $("#skipBtn").onclick=()=>{timers.forEach(clearTimeout);stage=4;initAudio();if(ac)ac.resume();startMusic();$("#flash").classList.add("on");setTimeout(enterMain,500);};
 function enterMain(){
   if(document.body.classList.contains("inside"))return;
