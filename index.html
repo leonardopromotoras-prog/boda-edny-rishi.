@@ -557,6 +557,7 @@ const GUESTS = {
   "paola-albarracin":{n:"Paola Albarracín",p:1,l:"es"},
   "mr-chotilal":{n:"Mr. Chotilal",p:2,l:"en"},
   "varsha-kissoon":{n:"Varsha Kissoon",p:1,l:"en"},
+  "ejemplo":{n:"Sofía Ramírez",p:2,l:"es",demo:true},
 };
 
 /* =================== TEXTS =================== */
@@ -861,12 +862,12 @@ async function submit(a,n){
   if(!guest) return;
   const box=$("#askBox");box.classList.add("saving");$("#err").classList.remove("show");
   try{
-    if(CONFIG.apiUrl){
+    if(CONFIG.apiUrl&&!guest.demo){
       const r=await fetch(CONFIG.apiUrl+"/rest/v1/rpc/rsvp_submit",{method:"POST",headers:{"Content-Type":"application/json",apikey:CONFIG.apiKey,Authorization:"Bearer "+CONFIG.apiKey},
         body:JSON.stringify({p_code:code,p_answer:a,p_count:n,p_lang:lang})});
       if(!r.ok) throw new Error(await r.text());
     }
-    answer={a,n,at:Date.now()}; store.set("er-rsvp-"+code,answer); renderThanks(true);
+    answer={a,n,at:Date.now()}; if(!guest.demo)store.set("er-rsvp-"+code,answer); renderThanks(true);
   }catch(e){console.error(e);$("#err").classList.add("show");}
   finally{box.classList.remove("saving");}
 }
@@ -915,6 +916,7 @@ async function admin(key){
 /* keep the guest page in sync with the panel (e.g. answer changed or reset by the couple) */
 async function syncAnswer(){
   if(!guest||!CONFIG.apiUrl)return;
+  if(guest.demo){answer=null;store.set("er-rsvp-"+code,null);renderThanks();return;}
   try{const st=await api("rsvp_status",{p_code:code});
     answer=st&&st.answer?{a:st.answer,n:st.attending,at:Date.now()}:null; store.set("er-rsvp-"+code,answer); renderThanks();}catch(e){}
 }
