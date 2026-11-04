@@ -65,7 +65,7 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 .gatesWrap.show{opacity:1}
 .heaven.approach .gatesWrap{transform:translate(-50%,-50%) scale(1)}
 .heaven .gatesWrap.enter{transition:transform 1.3s cubic-bezier(.6,0,.9,.35);transform:translate(-50%,-50%) scale(6.5)}
-.gates{position:absolute;left:4%;right:4%;bottom:0;top:17%;perspective:1300px}
+.gates{position:absolute;left:4%;right:4%;bottom:0;top:17%;perspective:1300px;opacity:.92}
 .gates .glow{position:absolute;inset:3% 2% 0;border-radius:50% 50% 0 0/24% 24% 0 0;opacity:.8;transition:opacity 1.6s;
   background:radial-gradient(60% 55% at 50% 42%,#fff 0%,#fffbf0 38%,#ffecc0 72%,rgba(255,226,165,.7) 100%)}
 .gates.open .glow{opacity:1}
@@ -77,7 +77,7 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 .crown{position:absolute;left:0;right:0;top:0;height:24%}
 .crown svg{width:100%;height:100%;overflow:visible;}
 .pil{position:absolute;bottom:0;width:8%;height:86%;border-radius:3px 3px 0 0;
-  background:linear-gradient(90deg,#e6d2a0,#fffaf0 45%,#efdfb8 60%,#d7c08a);box-shadow:0 0 12px rgba(255,236,190,.7)}
+  background:linear-gradient(90deg,#f0e3c4,#fffdf6 45%,#f6ecd6 60%,#e8d8b2);box-shadow:0 0 12px rgba(255,240,205,.6)}
 .pil::before{content:"";position:absolute;left:-30%;right:-30%;top:-2.5%;height:3.5%;border-radius:3px;background:linear-gradient(#fffaf0,#e2cb93)}
 .pil.l{left:-4%}.pil.r{right:-4%}
 .gate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;padding:16px;overflow:hidden;
@@ -86,9 +86,17 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 @keyframes florIn{from{opacity:0;scale:.85}to{opacity:1;scale:1}}
 @keyframes florSway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.2deg)}}
 .gcenter{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center}
-.stagebox{position:relative;display:flex;align-items:center;justify-content:center;width:min(92vw,520px);min-height:min(64vw,290px)}
+.stagebox{position:relative;display:flex;align-items:center;justify-content:center;width:min(92vw,520px);min-height:min(78vw,52vh,400px)}
+.couple .photo{position:relative;width:min(66vw,40vh,300px);aspect-ratio:4/5;margin:0 auto}
+.couple .photo::before{content:"";position:absolute;inset:-10%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,236,190,.55),rgba(255,236,190,0));z-index:-1}
+.couple .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,rgba(0,0,0,.6) 78%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,rgba(0,0,0,.6) 78%,transparent 100%)}
+.couple .cn2{font-family:var(--script);font-size:clamp(34px,10vw,48px);line-height:1.1;margin-top:-6px;padding:0 .4em;
+  background:linear-gradient(100deg,#8a6a22 0%,#b8913d 25%,#f3dc9b 40%,#b8913d 55%,#8a6a22 75%,#b8913d 100%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:gshine 5s linear infinite}
+.couple .cn2 span{font-family:var(--serif);font-size:.6em}
 .mono3d{position:absolute;left:50%;top:50%;margin:calc(min(64vw,290px)/-2) 0 0 calc(min(64vw,290px)/-2);width:min(64vw,290px);aspect-ratio:1;perspective:1000px;container-type:inline-size;cursor:pointer;-webkit-tap-highlight-color:transparent;opacity:0}
-.gate.go .mono3d{animation:flyIn 2.5s cubic-bezier(.3,.6,.25,1) both}
+.gate.go .mono3d{animation:flyIn 1.3s cubic-bezier(.3,.6,.25,1) both}
 .gate.go .mono3d.boom{animation:boom .5s cubic-bezier(.3,0,.6,1) forwards}
 @keyframes flyIn{from{opacity:0;transform:scale(3.4)}15%{opacity:1}to{opacity:1;transform:scale(1)}}
 @keyframes boom{from{opacity:1;transform:scale(1);filter:brightness(1)}40%{filter:brightness(1.8)}to{opacity:0;transform:scale(1.6);filter:brightness(2.4)}}
@@ -102,13 +110,13 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 .couple .amp2::before,.couple .amp2::after{content:"";height:1px;width:70px;background:linear-gradient(90deg,transparent,#b08a3e,transparent)}
 .later{display:flex;flex-direction:column;align-items:center}
 .gcenter .later .for{clip-path:inset(0 50% 0 50%);opacity:0}
-.gate.go .later .for{animation:unveil 1.4s cubic-bezier(.2,.7,.2,1) 3.6s forwards,gshine 6s linear infinite}
+.gate.go .later .for{animation:unveil 1.2s cubic-bezier(.2,.7,.2,1) 2.4s forwards,gshine 6s linear infinite}
 @keyframes unveil{0%{clip-path:inset(0 50% 0 50%);opacity:0;letter-spacing:.2em}100%{clip-path:inset(-20% -10% -20% -10%);opacity:1;letter-spacing:0}}
 .later .invite{font-family:var(--serif);font-style:italic;font-size:clamp(20px,5.6vw,26px);color:#6b5634;margin-top:8px;max-width:22ch;line-height:1.35;opacity:0}
-.gate.go .later .invite{animation:rise 1.2s ease 4.4s forwards}
+.gate.go .later .invite{animation:rise 1s ease 3s forwards}
 .later .openBtn{opacity:0}
-.gate.go .later .openBtn{animation:rise 1s ease 5s forwards,breathe 2.4s ease-in-out 6s infinite}
-.gcenter .for{margin-top:22px;font-family:var(--script);font-size:clamp(32px,9vw,46px);line-height:1.2;padding:0 .5em;
+.gate.go .later .openBtn{animation:rise 1s ease 3.4s forwards,breathe 2.4s ease-in-out 4.4s infinite}
+.gcenter .for{margin-top:16px;font-family:var(--script);font-size:clamp(32px,9vw,46px);line-height:1.2;padding:0 .5em;
   background:linear-gradient(100deg,#8a6a22 0%,#b8913d 25%,#f0d796 42%,#b8913d 58%,#8a6a22 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gshine 6s linear infinite}
 .openBtn{margin-top:22px;padding:15px 38px;border-radius:40px;font-family:var(--caps);letter-spacing:.3em;font-size:14px;color:#fff;
   background:linear-gradient(135deg,#dcbb6a,#b08a3e 50%,#d6b260 75%,#9a7631);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),0 10px 28px -8px rgba(138,106,34,.6);
@@ -118,7 +126,7 @@ body.inside .chip{background:rgba(255,255,255,.75);color:var(--gold-d);border-co
 .mono3d .ring{position:absolute;inset:-3%;border-radius:50%;border:1.5px solid rgba(184,145,61,.6);box-shadow:0 0 22px rgba(230,190,110,.35),inset 0 0 22px rgba(230,190,110,.25)}
 .mono3d .ring.r2{inset:5%;border:1px dashed rgba(184,145,61,.55);box-shadow:none;animation:spin 34s linear infinite}
 .mono3d .tilt{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s ease-out}
-.m3{position:absolute;inset:0;transform-style:preserve-3d;animation:spinIn 2.8s cubic-bezier(.2,.6,.3,1),twirl 4.2s cubic-bezier(.6,0,.3,1) 2.8s infinite}
+.m3{position:absolute;inset:0;transform-style:preserve-3d;animation:spinIn 1.35s cubic-bezier(.2,.6,.3,1),twirl 4.2s cubic-bezier(.6,0,.3,1) 1.35s infinite}
 @keyframes spinIn{from{transform:rotateY(-720deg)}to{transform:rotateY(0)}}
 @keyframes twirl{0%{transform:rotateY(0) rotateX(6deg)}45%{transform:rotateY(360deg) rotateX(-4deg)}62%{transform:rotateY(380deg) rotateX(4deg)}80%{transform:rotateY(345deg) rotateX(-2deg)}100%{transform:rotateY(360deg) rotateX(6deg)}}
 .lay{position:absolute;inset:0;pointer-events:none;-webkit-backface-visibility:visible;backface-visibility:visible}
@@ -216,6 +224,18 @@ section.blk.seen{opacity:1;transform:none}
 .count b{display:block;font-family:var(--caps);font-size:26px;color:var(--gold-d);font-weight:500}
 .count span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8b7550}
 .evt{display:grid;gap:14px;margin-top:16px}
+.panel .sub{font-family:var(--caps);font-size:11px;letter-spacing:.22em;color:var(--gold-d);margin-top:2px}
+.dress{margin-top:18px;text-align:center;overflow:hidden}
+.dress .kk{font-family:var(--caps);font-size:11px;letter-spacing:.3em;color:#8b7550}
+.dress .ttl{font-family:var(--script);font-size:54px;line-height:1.1;margin:6px 0 2px;padding:0 .3em;
+  background:linear-gradient(100deg,#8a6a22 0%,#b8913d 25%,#f0d796 42%,#b8913d 58%,#8a6a22 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gshine 6s linear infinite}
+.dress .glasses{width:74px;height:74px;display:block;margin:4px auto 0;color:var(--gold)}
+.dress p{font-size:17px;line-height:1.55;color:#5b4826;max-width:30ch;margin:8px auto 0}
+.dress .tags{display:flex;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap}
+.dress .tags span{font-family:var(--caps);font-size:10.5px;letter-spacing:.18em;color:#7a5e2a;padding:7px 12px;border-radius:20px;border:1px solid rgba(176,138,62,.4);background:rgba(255,250,238,.8)}
+.thanks .gift{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:16px auto 0;max-width:34ch;padding:14px 16px;border-radius:14px;
+  background:rgba(255,248,232,.85);border:1px dashed rgba(176,138,62,.5);font-size:16.5px;line-height:1.5;color:#5b4826;font-style:italic}
+.thanks .gift svg{flex:none;width:26px;height:26px;color:var(--gold);margin-top:2px}
 .evt .panel{margin:0;text-align:center}
 .evt svg{width:46px;height:46px;color:var(--gold)}
 .evt h3{font-family:var(--caps);font-weight:500;letter-spacing:.22em;font-size:14px;color:#4a3a22;margin-top:6px}
@@ -321,9 +341,8 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
     <div class="gcenter">
       <div class="stagebox">
         <div class="couple" id="couple">
-          <div class="cn">Edny Aliscano</div>
-          <div class="amp2" data-t="and"></div>
-          <div class="cn">Rishi Chotilal</div>
+          <div class="photo"><img src="pareja.jpg" alt="Edny y Rishi"></div>
+          <div class="cn2">Edny <span>&amp;</span> Rishi</div>
         </div>
         <div class="mono3d" id="mono3d" role="button" aria-label="E y R">
           <div class="halo"></div><div class="ring"></div><div class="ring r2"></div>
@@ -344,8 +363,8 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
 <!-- shared monogram symbol -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1c2"/><stop offset=".35" stop-color="#e2bf6a"/><stop offset=".6" stop-color="#b8913d"/><stop offset="1" stop-color="#f3dc9b"/></linearGradient>
-    <linearGradient id="gGate" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset=".35" stop-color="#f0dfb4"/><stop offset=".65" stop-color="#e2cb93"/><stop offset="1" stop-color="#fbf1d8"/></linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8e6"/><stop offset=".35" stop-color="#f0dcaa"/><stop offset=".6" stop-color="#dcc28a"/><stop offset="1" stop-color="#fbefd0"/></linearGradient>
+    <linearGradient id="gGate" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset=".35" stop-color="#f6ead0"/><stop offset=".65" stop-color="#eddcb8"/><stop offset="1" stop-color="#fdf6e8"/></linearGradient>
     <clipPath id="leafClip"><path d="M3 228V64Q3 12 97 5V228Z"/></clipPath>
     <symbol id="leafSym" viewBox="0 0 100 230">
       <path d="M3 228V64Q3 12 97 5V228Z" fill="rgba(255,251,242,.38)"/>
@@ -469,12 +488,19 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
         </div>
         <div class="panel">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="34" r="14"/><circle cx="32" cy="34" r="9"/><path d="M8 14v12a4 4 0 0 0 4 4v26M12 14v10M16 14v12a4 4 0 0 1-4 4"/><path d="M54 56V14c-5 3-7 10-7 18h7"/></svg>
-          <h3 data-t="rec"></h3><div class="time">4:00 p.m.</div>
+          <h3 data-t="rec"></h3><div class="sub" data-t="recSub"></div><div class="time">4:00 p.m.</div>
           <p>Kampo Vibes Restaurant<br>Chaguanas</p>
           <div class="btnRow">
             <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kampo+Vibes+Restaurant+Chaguanas+Trinidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-t="map"></span></a>
           </div>
         </div>
+      </div>
+      <div class="panel dress">
+        <div class="kk" data-t="dressK"></div>
+        <svg class="glasses" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h18l-2 14a7 7 0 0 1-14 0Z"/><path d="M19 33v17M13 50h12"/><path d="M36 12h18l-2 14a7 7 0 0 1-14 0Z"/><path d="M45 33v17M39 50h12"/><path d="M12 19h14M38 19h14"/><path d="M31 6l1-3M33 9l3-2M29 9l-3-2"/></svg>
+        <div class="ttl" data-t="dressH"></div>
+        <p data-t="dressP"></p>
+        <div class="tags"><span data-t="dressT1"></span><span data-t="dressT2"></span></div>
       </div>
       <div class="btnRow"><a class="btn" id="calBtn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span data-t="cal"></span></a></div>
     </section>
@@ -573,7 +599,7 @@ const T = {
   dear:"Con mucho cariño reservamos para", tk1:"PASE RESERVADO", tkN:"PASES RESERVADOS",
   passNote:"Tu presencia hará este día aún más especial.",
   countK:"FALTAN", countH:"Para el gran día", d:"Días", h:"Horas", m:"Min", s:"Seg",
-  whereK:"CUÁNDO Y DÓNDE", whereH:"Sábado 5 de diciembre", map:"VER MAPA", cal:"AGREGAR AL CALENDARIO",
+  whereK:"CUÁNDO Y DÓNDE", recSub:"FIESTA DE CÓCTEL", dressK:"CÓDIGO DE VESTIMENTA", dressH:"Cóctel", dressP:"Después de la ceremonia celebraremos con una fiesta de cóctel. Ven elegante y cómodo para brindar y bailar con nosotros.", dressT1:"ELLAS · VESTIDO DE CÓCTEL", dressT2:"ELLOS · TRAJE O CAMISA DE VESTIR", whereH:"Sábado 5 de diciembre", map:"VER MAPA", cal:"AGREGAR AL CALENDARIO",
   verseBig:"“Así que ya no son dos, sino una sola carne. Por tanto, lo que Dios ha unido, que no lo separe el hombre.”<small>MATEO 19:6</small>",
   rsvpK:"CONFIRMA TU ASISTENCIA", rsvpH:"¿Nos acompañas?",
   rsvpQ:"Nos encantaría compartir contigo este día. Por favor, confírmanos si podrás acompañarnos.",
@@ -583,6 +609,7 @@ const T = {
   yP:(n)=>`Gracias por confirmar tu asistencia${n>1?` (${n} personas)`:""}. Nos llena de alegría saber que estarás con nosotros. Te estaremos esperando muy cordialmente el <b>sábado 5 de diciembre de 2026</b>, a las <b>2:00 p. m.</b>, en St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
   nT:"Gracias por avisarnos",
   nP:"Lamentamos mucho que no puedas acompañarnos. Nos hubiese encantado que estuvieras con nosotros en este día tan especial, pero entendemos que no siempre es posible. Gracias de corazón por avisarnos.",
+  gift:"Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos algo en efectivo, sabremos apreciarlo con mucho cariño.",
   sig:"Con cariño, Edny y Rishi", change:"¿Cambiaste de opinión? Cambiar respuesta",
   noGuest:"Abre el link personal que te enviaron para confirmar tu asistencia.",
   calTitle:"Boda de Edny & Rishi",
@@ -598,7 +625,7 @@ const T = {
   dear:"With love, we have reserved for", tk1:"SEAT RESERVED", tkN:"SEATS RESERVED",
   passNote:"Your presence will make this day even more special.",
   countK:"COUNTDOWN", countH:"To the big day", d:"Days", h:"Hours", m:"Min", s:"Sec",
-  whereK:"WHEN & WHERE", whereH:"Saturday, December 5th", map:"VIEW MAP", cal:"ADD TO CALENDAR",
+  whereK:"WHEN & WHERE", recSub:"COCKTAIL PARTY", dressK:"DRESS CODE", dressH:"Cocktail", dressP:"After the ceremony we will celebrate with a cocktail party. Come elegant and comfortable, ready to toast and dance with us.", dressT1:"LADIES · COCKTAIL DRESS", dressT2:"GENTLEMEN · SUIT OR DRESS SHIRT", whereH:"Saturday, December 5th", map:"VIEW MAP", cal:"ADD TO CALENDAR",
   verseBig:"“So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.”<small>MATTHEW 19:6</small>",
   rsvpK:"PLEASE RSVP", rsvpH:"Will you join us?",
   rsvpQ:"We would love to share this day with you. Please let us know if you will be able to attend.",
@@ -608,6 +635,7 @@ const T = {
   yP:(n)=>`Thank you for confirming your attendance${n>1?` (${n} people)`:""}. We are overjoyed that you will be with us. We look forward to welcoming you on <b>Saturday, December 5th, 2026</b>, at <b>2:00 p.m.</b>, at St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
   nT:"Thank you for letting us know",
   nP:"We are so sorry you won't be able to join us. We would have loved to have you with us on this special day, but we understand it isn't always possible. Thank you from the bottom of our hearts for letting us know.",
+  gift:"Your presence is our greatest gift, but if you wish to honor us with a cash gift, it will be truly appreciated.",
   sig:"With love, Edny & Rishi", change:"Changed your mind? Update your answer",
   noGuest:"Please open the personal link you received to RSVP.",
   calTitle:"Edny & Rishi's Wedding",
@@ -812,7 +840,7 @@ function startIntro(){ // initials fly in; try bells (phones may need the tap)
     if(running()) bell(ac.currentTime+.02,523.25,.5);
     setTimeout(()=>{m.style.visibility="hidden";},500);
     $("#couple").classList.add("show"); mode="names";
-  },2550);
+  },1350);
 }
 $("#openBtn").onclick=()=>{
   if(stage!==1)return; stage=2; mode="opening";
@@ -874,7 +902,7 @@ async function submit(a,n){
 function renderThanks(celebrate){
   const t=T[lang];
   if(answer){$("#askBox").style.display="none";$("#thanks").classList.add("show");
-    $("#thxTitle").textContent=answer.a==="si"?t.yT:t.nT;$("#thxText").innerHTML=answer.a==="si"?t.yP(answer.n):t.nP;
+    $("#thxTitle").textContent=answer.a==="si"?t.yT:t.nT;$("#thxText").innerHTML=(answer.a==="si"?t.yP(answer.n):t.nP)+`<span class="gift"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M2 9h20v-3H2zM12 6v15M12 6C10 2 6 2 6 4.5S10 6 12 6c2 0 6 .5 6-1.5S14 2 12 6"/></svg>${t.gift}</span>`;
     if(celebrate&&answer.a==="si") burst();}
   else{$("#askBox").style.display="";$("#thanks").classList.remove("show");}
 }
