@@ -234,7 +234,7 @@ section.blk.seen{opacity:1;transform:none}
 .dress p{font-size:17px;line-height:1.55;color:#5b4826;max-width:34ch;margin:8px auto 0}
 .dress .tags{display:flex;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap}
 .dress .tags span{font-family:var(--caps);font-size:10.5px;letter-spacing:.18em;color:#7a5e2a;padding:7px 12px;border-radius:20px;border:1px solid rgba(176,138,62,.4);background:rgba(255,250,238,.8)}
-.thanks .gift{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:16px auto 0;max-width:34ch;padding:14px 16px;border-radius:14px;
+.thanks .gift{display:flex;gap:10px;align-items:center;justify-content:center;text-align:left;margin:16px auto 0;max-width:34ch;padding:14px 16px;border-radius:14px;
   background:rgba(255,248,232,.85);border:1px dashed rgba(176,138,62,.5);font-size:16.5px;line-height:1.5;color:#5b4826;font-style:italic}
 .thanks .gift svg{flex:none;width:26px;height:26px;color:var(--gold);margin-top:2px}
 .evt .panel{margin:0;text-align:center}
@@ -610,7 +610,7 @@ const T = {
   yP:(n)=>`Gracias por confirmar tu asistencia${n>1?` (${n} personas)`:""}. Nos llena de alegría saber que estarás con nosotros. Te estaremos esperando muy cordialmente el <b>sábado 5 de diciembre de 2026</b>, a la <b>1:30 p. m.</b> (la ceremonia inicia a las 2:00 p. m.), en St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
   nT:"Gracias por avisarnos",
   nP:"Lamentamos mucho que no puedas acompañarnos. Nos hubiese encantado que estuvieras con nosotros en este día tan especial, pero entendemos que no siempre es posible. Gracias de corazón por avisarnos.",
-  gift:"Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos algo en efectivo, sabremos apreciarlo con mucho cariño.",
+  gift:"Tu presencia es nuestro mayor regalo.",
   sig:"Con cariño, Edny y Rishi", change:"¿Cambiaste de opinión? Cambiar respuesta",
   noGuest:"Abre el link personal que te enviaron para confirmar tu asistencia.",
   calTitle:"Boda de Edny & Rishi",
@@ -636,7 +636,7 @@ const T = {
   yP:(n)=>`Thank you for confirming your attendance${n>1?` (${n} people)`:""}. We are overjoyed that you will be with us. We look forward to welcoming you on <b>Saturday, December 5th, 2026</b>, at <b>1:30 p.m.</b> (the ceremony begins at 2:00 p.m.), at St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
   nT:"Thank you for letting us know",
   nP:"We are so sorry you won't be able to join us. We would have loved to have you with us on this special day, but we understand it isn't always possible. Thank you from the bottom of our hearts for letting us know.",
-  gift:"Your presence is our greatest gift, but if you wish to honor us with a cash gift, it will be truly appreciated.",
+  gift:"Your presence is our greatest gift.",
   sig:"With love, Edny & Rishi", change:"Changed your mind? Update your answer",
   noGuest:"Please open the personal link you received to RSVP.",
   calTitle:"Edny & Rishi's Wedding",
@@ -903,7 +903,7 @@ async function submit(a,n){
 function renderThanks(celebrate){
   const t=T[lang];
   if(answer){$("#askBox").style.display="none";$("#thanks").classList.add("show");
-    $("#thxTitle").textContent=answer.a==="si"?t.yT:t.nT;$("#thxText").innerHTML=(answer.a==="si"?t.yP(answer.n):t.nP)+`<span class="gift"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M2 9h20v-3H2zM12 6v15M12 6C10 2 6 2 6 4.5S10 6 12 6c2 0 6 .5 6-1.5S14 2 12 6"/></svg>${t.gift}</span>`;
+    $("#thxTitle").textContent=answer.a==="si"?t.yT:t.nT;$("#thxText").innerHTML=(answer.a==="si"?t.yP(answer.n):t.nP)+`<span class="gift"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.4-9-9a4.6 4.6 0 0 1 9-2.6A4.6 4.6 0 0 1 21 11c-2 4.6-9 9-9 9Z"/></svg>${t.gift}</span>`;
     if(celebrate&&answer.a==="si") burst();}
   else{$("#askBox").style.display="";$("#thanks").classList.remove("show");}
 }
