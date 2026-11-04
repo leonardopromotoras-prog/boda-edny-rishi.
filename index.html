@@ -658,7 +658,7 @@ function applyLang(){
   const t=T[lang]; document.documentElement.lang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>{const v=t[el.dataset.t]; if(typeof v==="string") el.innerHTML=v;});
   document.querySelectorAll("#langBtn b").forEach(b=>{b.style.opacity=b.dataset.l===lang?1:.45});
-  $("#forLine").textContent = guest ? guest.n : "Edny & Rishi";
+  const fl=$("#forLine"); if(fl) fl.textContent = guest ? guest.n : "Edny & Rishi";
   const p = guest?guest.p:1;
   $("#cardGuest .gn").textContent = guest?guest.n:"";
   $("#cardGuest .gp").textContent = guest?(p>1?t.passN(p):t.pass1):"";
