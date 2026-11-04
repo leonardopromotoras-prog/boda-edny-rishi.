@@ -197,6 +197,7 @@ html[lang=en] .hdr{font-size:1.72cqw;letter-spacing:.18em;left:17%;width:67%}
 .cols .sep{background:linear-gradient(transparent,#b08a3e,transparent)}
 .col svg{width:7.5cqw;height:7.5cqw;display:block;margin:0 auto 1.2cqw}
 .col .lbl{font-family:var(--caps);font-size:1.75cqw;letter-spacing:.2em;color:#4a3a22}
+.col .arr{font-family:var(--caps);font-size:1.55cqw;letter-spacing:.12em;color:#7a6542;margin:-.3cqw 0 .6cqw}
 .col .hr{font-family:var(--serif);font-size:3.3cqw;color:#a07a32;font-weight:600;margin:.4cqw 0 .6cqw;letter-spacing:.04em}
 .col .pl{font-size:2.1cqw;line-height:1.3;color:#3d301c;font-weight:500}
 .orn2{left:31%;width:39%;top:81.6%;animation-delay:3.2s}
@@ -440,14 +441,14 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
           <div class="col">
             <svg viewBox="0 0 64 64" fill="none" stroke="#a07a32" stroke-width="2"><path d="M32 4v10M27 8h10M32 14 18 28v30h28V28Z"/><path d="M10 58V38l8-8M54 58V38l-8-8M6 58h52"/><path d="M27 58V46a5 5 0 0 1 10 0v12"/><circle cx="32" cy="32" r="3"/></svg>
             <div class="lbl" data-t="cer"></div>
-            <div class="hr">1:30 P.M.</div>
+            <div class="hr">2:00 P.M.</div><div class="arr" data-t="arr"></div>
             <div class="pl">St. Philip &amp; St. James<br>Roman Catholic Church<br>Chaguanas</div>
           </div>
           <div class="sep"></div>
           <div class="col">
             <svg viewBox="0 0 64 64" fill="none" stroke="#a07a32" stroke-width="2"><circle cx="32" cy="34" r="14"/><circle cx="32" cy="34" r="9"/><path d="M8 14v12a4 4 0 0 0 4 4v26M12 14v10M16 14v12a4 4 0 0 1-4 4"/><path d="M54 56V14c-5 3-7 10-7 18h7"/></svg>
             <div class="lbl" data-t="rec"></div>
-            <div class="hr">2:00 P.M.</div>
+            <div class="hr">4:00 P.M.</div><div class="arr" aria-hidden="true">&nbsp;</div>
             <div class="pl">Kampo Vibes Restaurant<br>Chaguanas</div>
           </div>
         </div>
@@ -480,7 +481,7 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
       <div class="evt">
         <div class="panel">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 4v10M27 8h10M32 14 18 28v30h28V28Z"/><path d="M10 58V38l8-8M54 58V38l-8-8M6 58h52"/><path d="M27 58V46a5 5 0 0 1 10 0v12"/><circle cx="32" cy="32" r="3"/></svg>
-          <h3 data-t="cer"></h3><div class="time">1:30 p.m.</div>
+          <h3 data-t="cer"></h3><div class="time">2:00 p.m.</div><div class="sub" data-t="arr"></div>
           <p>St. Philip &amp; St. James<br>Roman Catholic Church<br>Chaguanas</p>
           <div class="btnRow">
             <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=St.+Philip+and+St.+James+Roman+Catholic+Church+Chaguanas+Trinidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-t="map"></span></a>
@@ -488,7 +489,7 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
         </div>
         <div class="panel">
           <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="34" r="14"/><circle cx="32" cy="34" r="9"/><path d="M8 14v12a4 4 0 0 0 4 4v26M12 14v10M16 14v12a4 4 0 0 1-4 4"/><path d="M54 56V14c-5 3-7 10-7 18h7"/></svg>
-          <h3 data-t="rec"></h3><div class="sub" data-t="recSub"></div><div class="time">2:00 p.m.</div>
+          <h3 data-t="rec"></h3><div class="sub" data-t="recSub"></div><div class="time">4:00 p.m.</div>
           <p>Kampo Vibes Restaurant<br>Chaguanas</p>
           <div class="btnRow">
             <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kampo+Vibes+Restaurant+Chaguanas+Trinidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-t="map"></span></a>
@@ -560,7 +561,7 @@ const CONFIG = {
   apiUrl: "https://qjamoajjaxbdnifpedfz.supabase.co",
   apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqYW1vYWpqYXhiZG5pZnBlZGZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM1ODIwNjAsImV4cCI6MjEwOTE1ODA2MH0.D9b6DW1ivRv1-ZuFm0dC2TqTN0GfAUeX0waK82L7d1k",
   previewCode: "",
-  eventStart: "2026-12-05T13:30:00-04:00",
+  eventStart: "2026-12-05T14:00:00-04:00",
 };
 const GUESTS = {
   "yasmin-khan-lee-wen":{n:"Yasmin Khan-Lee Wen",p:2,l:"en"},
@@ -599,14 +600,14 @@ const T = {
   dear:"Con mucho cariño reservamos para", tk1:"PASE RESERVADO", tkN:"PASES RESERVADOS",
   passNote:"Tu presencia hará este día aún más especial.",
   countK:"FALTAN", countH:"Para el gran día", d:"Días", h:"Horas", m:"Min", s:"Seg",
-  whereK:"CUÁNDO Y DÓNDE", recSub:"FIESTA DE CÓCTEL", dressK:"CÓDIGO DE VESTIMENTA", dressH:"Cóctel", dressP:"Después de la ceremonia, queremos compartir con ustedes un momento especial en una celebración íntima junto a familiares y amigos.<br><br>Los esperamos para disfrutar de una elegante <b>fiesta de cóctel</b>, donde brindaremos por este día tan especial, compartiremos momentos inolvidables y celebraremos entre buena música, baile y alegría.<br><br>Vengan elegantes, pero cómodos, y prepárense para celebrar con nosotros.", dressT1:"ELLAS · VESTIDO DE CÓCTEL", dressT2:"ELLOS · TRAJE O CAMISA DE VESTIR", whereH:"Sábado 5 de diciembre", map:"VER MAPA", cal:"AGREGAR AL CALENDARIO",
+  whereK:"CUÁNDO Y DÓNDE", arr:"LLEGADA 1:30 P.M.", recSub:"FIESTA DE CÓCTEL", dressK:"CÓDIGO DE VESTIMENTA", dressH:"Cóctel", dressP:"Después de la ceremonia, queremos compartir con ustedes un momento especial en una celebración íntima junto a familiares y amigos.<br><br>Los esperamos para disfrutar de una elegante <b>fiesta de cóctel</b>, donde brindaremos por este día tan especial, compartiremos momentos inolvidables y celebraremos entre buena música, baile y alegría.<br><br>Vengan elegantes, pero cómodos, y prepárense para celebrar con nosotros.", dressT1:"ELLAS · VESTIDO DE CÓCTEL", dressT2:"ELLOS · TRAJE O CAMISA DE VESTIR", whereH:"Sábado 5 de diciembre", map:"VER MAPA", cal:"AGREGAR AL CALENDARIO",
   verseBig:"“Así que ya no son dos, sino una sola carne. Por tanto, lo que Dios ha unido, que no lo separe el hombre.”<small>MATEO 19:6</small>",
   rsvpK:"CONFIRMA TU ASISTENCIA", rsvpH:"¿Nos acompañas?",
   rsvpQ:"Nos encantaría compartir contigo este día. Por favor, confírmanos si podrás acompañarnos.",
   yes:"SÍ, ASISTIRÉ", no:"NO PODRÉ ASISTIR", howmany:"¿Cuántas personas asistirán?", confirm:"CONFIRMAR",
   err:"No pudimos guardar tu respuesta. Revisa tu conexión e inténtalo de nuevo.",
   yT:"¡Gracias por confirmar!",
-  yP:(n)=>`Gracias por confirmar tu asistencia${n>1?` (${n} personas)`:""}. Nos llena de alegría saber que estarás con nosotros. Te estaremos esperando muy cordialmente el <b>sábado 5 de diciembre de 2026</b>, a la <b>1:30 p. m.</b>, en St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
+  yP:(n)=>`Gracias por confirmar tu asistencia${n>1?` (${n} personas)`:""}. Nos llena de alegría saber que estarás con nosotros. Te estaremos esperando muy cordialmente el <b>sábado 5 de diciembre de 2026</b>, a la <b>1:30 p. m.</b> (la ceremonia inicia a las 2:00 p. m.), en St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
   nT:"Gracias por avisarnos",
   nP:"Lamentamos mucho que no puedas acompañarnos. Nos hubiese encantado que estuvieras con nosotros en este día tan especial, pero entendemos que no siempre es posible. Gracias de corazón por avisarnos.",
   gift:"Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos algo en efectivo, sabremos apreciarlo con mucho cariño.",
@@ -625,14 +626,14 @@ const T = {
   dear:"With love, we have reserved for", tk1:"SEAT RESERVED", tkN:"SEATS RESERVED",
   passNote:"Your presence will make this day even more special.",
   countK:"COUNTDOWN", countH:"To the big day", d:"Days", h:"Hours", m:"Min", s:"Sec",
-  whereK:"WHEN & WHERE", recSub:"COCKTAIL PARTY", dressK:"DRESS CODE", dressH:"Cocktail", dressP:"After the ceremony, we want to share a special moment with you in an intimate celebration with family and friends.<br><br>Join us for an elegant <b>cocktail party</b>, where we will toast to this very special day, share unforgettable moments and celebrate with good music, dancing and joy.<br><br>Come elegant but comfortable, and get ready to celebrate with us.", dressT1:"LADIES · COCKTAIL DRESS", dressT2:"GENTLEMEN · SUIT OR DRESS SHIRT", whereH:"Saturday, December 5th", map:"VIEW MAP", cal:"ADD TO CALENDAR",
+  whereK:"WHEN & WHERE", arr:"ARRIVAL 1:30 P.M.", recSub:"COCKTAIL PARTY", dressK:"DRESS CODE", dressH:"Cocktail", dressP:"After the ceremony, we want to share a special moment with you in an intimate celebration with family and friends.<br><br>Join us for an elegant <b>cocktail party</b>, where we will toast to this very special day, share unforgettable moments and celebrate with good music, dancing and joy.<br><br>Come elegant but comfortable, and get ready to celebrate with us.", dressT1:"LADIES · COCKTAIL DRESS", dressT2:"GENTLEMEN · SUIT OR DRESS SHIRT", whereH:"Saturday, December 5th", map:"VIEW MAP", cal:"ADD TO CALENDAR",
   verseBig:"“So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.”<small>MATTHEW 19:6</small>",
   rsvpK:"PLEASE RSVP", rsvpH:"Will you join us?",
   rsvpQ:"We would love to share this day with you. Please let us know if you will be able to attend.",
   yes:"YES, I WILL ATTEND", no:"SORRY, I CAN'T ATTEND", howmany:"How many people will attend?", confirm:"CONFIRM",
   err:"We couldn't save your answer. Please check your connection and try again.",
   yT:"Thank you for confirming!",
-  yP:(n)=>`Thank you for confirming your attendance${n>1?` (${n} people)`:""}. We are overjoyed that you will be with us. We look forward to welcoming you on <b>Saturday, December 5th, 2026</b>, at <b>1:30 p.m.</b>, at St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
+  yP:(n)=>`Thank you for confirming your attendance${n>1?` (${n} people)`:""}. We are overjoyed that you will be with us. We look forward to welcoming you on <b>Saturday, December 5th, 2026</b>, at <b>1:30 p.m.</b> (the ceremony begins at 2:00 p.m.), at St. Philip &amp; St. James Roman Catholic Church, Chaguanas.`,
   nT:"Thank you for letting us know",
   nP:"We are so sorry you won't be able to join us. We would have loved to have you with us on this special day, but we understand it isn't always possible. Thank you from the bottom of our hearts for letting us know.",
   gift:"Your presence is our greatest gift, but if you wish to honor us with a cash gift, it will be truly appreciated.",
@@ -669,7 +670,7 @@ function applyLang(){
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function calLink(){
   const t=T[lang];
-  const det = lang==="es"?"Ceremonia 1:30 p. m. – St. Philip & St. James Roman Catholic Church, Chaguanas.\nRecepción 2:00 p. m. – Kampo Vibes Restaurant, Chaguanas.":"Ceremony 1:30 p.m. – St. Philip & St. James Roman Catholic Church, Chaguanas.\nReception 2:00 p.m. – Kampo Vibes Restaurant, Chaguanas.";
+  const det = lang==="es"?"Llegada 1:30 p. m. · Ceremonia 2:00 p. m. – St. Philip & St. James Roman Catholic Church, Chaguanas.\nRecepción 4:00 p. m. – Kampo Vibes Restaurant, Chaguanas.":"Arrival 1:30 p.m. · Ceremony 2:00 p.m. – St. Philip & St. James Roman Catholic Church, Chaguanas.\nReception 4:00 p.m. – Kampo Vibes Restaurant, Chaguanas.";
   return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(t.calTitle)+"&dates=20261205T173000Z/20261206T030000Z&details="+encodeURIComponent(det)+"&location="+encodeURIComponent("St. Philip & St. James Roman Catholic Church, Chaguanas, Trinidad and Tobago");
 }
 $("#langBtn").onclick=()=>{lang=lang==="es"?"en":"es";applyLang();};
