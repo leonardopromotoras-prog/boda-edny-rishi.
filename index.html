@@ -259,6 +259,12 @@ section.blk.seen{opacity:1;transform:none}
 .choice:hover{transform:translateY(-3px)}
 .choice .ico{display:block;font-size:24px;margin-bottom:4px;font-family:var(--serif)}
 .howmany{margin-top:18px;display:none}
+.famName{display:none;margin:14px auto 4px;max-width:320px;text-align:left}
+body.family .famName{display:block}
+.famName label{display:block;font-family:var(--caps);font-size:11px;letter-spacing:.2em;color:#7a5e2a;margin-bottom:6px;text-align:center}
+.famName input{width:100%;padding:12px 16px;border-radius:14px;border:1px solid rgba(176,138,62,.5);background:#fffdf8;font-family:var(--serif);font-size:19px;color:#4a3a22;text-align:center;outline:none}
+.famName input:focus{border-color:#b8913d;box-shadow:0 0 0 3px rgba(230,200,130,.3)}
+.famName.bad input{border-color:#c0574b;box-shadow:0 0 0 3px rgba(192,87,75,.15)}
 .howmany.show{display:block}
 .howmany p{font-size:17px;color:#5b4826}
 .steps{display:inline-flex;align-items:center;gap:18px;margin-top:8px}
@@ -516,6 +522,7 @@ th{font-family:var(--caps);font-size:11px;letter-spacing:.16em;color:#8b7550;bac
       <div class="panel">
         <div id="askBox">
           <div class="q" data-t="rsvpQ"></div>
+          <div class="famName" id="famName"><label for="famInput" data-t="famLbl"></label><input id="famInput" type="text" maxlength="60" autocomplete="name"></div>
           <div class="choices">
             <button class="choice yes" id="yesBtn"><span class="ico">♥</span><span data-t="yes"></span></button>
             <button class="choice no" id="noBtn"><span class="ico">✉</span><span data-t="no"></span></button>
@@ -584,7 +591,8 @@ const GUESTS = {
   "paola-albarracin":{n:"Paola Albarracín",p:1,l:"es"},
   "mr-chotilal":{n:"Mr. Chotilal",p:2,l:"en"},
   "varsha-kissoon":{n:"Varsha Kissoon",p:1,l:"en"},
-  "ejemplo":{n:"Sofía Ramírez",p:2,l:"es",demo:true},
+  "danika":{n:"Danika",p:1,l:"es"},
+  "familia":{n:"Familia",p:10,l:"es",family:true},
   "example":{n:"Emily Johnson",p:2,l:"en",demo:true},
 };
 
@@ -601,7 +609,7 @@ const T = {
   dear:"Con mucho cariño reservamos para", tk1:"PASE RESERVADO", tkN:"PASES RESERVADOS",
   passNote:"Tu presencia hará este día aún más especial.",
   countK:"FALTAN", countH:"Para el gran día", d:"Días", h:"Horas", m:"Min", s:"Seg",
-  whereK:"CUÁNDO Y DÓNDE", arr:"LLEGADA 1:30 P.M.", recSub:"FIESTA DE CÓCTEL", dressK:"CÓDIGO DE VESTIMENTA", dressH:"Cóctel", dressP:"Después de la ceremonia, queremos compartir con ustedes un momento especial en una celebración íntima junto a familiares y amigos.<br><br>Vengan elegantes, pero cómodos, y prepárense para celebrar con nosotros.", dressT1:"ELLAS · VESTIDO DE CÓCTEL", dressT2:"ELLOS · TRAJE O CAMISA DE VESTIR", whereH:"Sábado 5 de diciembre", map:"VER MAPA", cal:"AGREGAR AL CALENDARIO",
+  whereK:"CUÁNDO Y DÓNDE", famN:"Querida Familia", famGp:"CON TODO NUESTRO CARIÑO", famLbl:"ESCRIBE TU NOMBRE", famNeed:"Por favor escribe tu nombre para confirmar.", arr:"LLEGADA 1:30 P.M.", recSub:"FIESTA DE CÓCTEL", dressK:"CÓDIGO DE VESTIMENTA", dressH:"Cóctel", dressP:"Después de la ceremonia, queremos compartir con ustedes un momento especial en una celebración íntima junto a familiares y amigos.<br><br>Vengan elegantes, pero cómodos, y prepárense para celebrar con nosotros.", dressT1:"ELLAS · VESTIDO DE CÓCTEL", dressT2:"ELLOS · TRAJE O CAMISA DE VESTIR", whereH:"Sábado 5 de diciembre", map:"VER MAPA", cal:"AGREGAR AL CALENDARIO",
   verseBig:"“Así que ya no son dos, sino una sola carne. Por tanto, lo que Dios ha unido, que no lo separe el hombre.”<small>MATEO 19:6</small>",
   rsvpK:"CONFIRMA TU ASISTENCIA", rsvpH:"¿Nos acompañas?",
   rsvpQ:"Nos encantaría compartir contigo este día. Por favor, confírmanos si podrás acompañarnos.",
@@ -627,7 +635,7 @@ const T = {
   dear:"With love, we have reserved for", tk1:"SEAT RESERVED", tkN:"SEATS RESERVED",
   passNote:"Your presence will make this day even more special.",
   countK:"COUNTDOWN", countH:"To the big day", d:"Days", h:"Hours", m:"Min", s:"Sec",
-  whereK:"WHEN & WHERE", arr:"ARRIVAL 1:30 P.M.", recSub:"COCKTAIL PARTY", dressK:"DRESS CODE", dressH:"Cocktail", dressP:"After the ceremony, we want to share a special moment with you in an intimate celebration with family and friends.<br><br>Come elegant but comfortable, and get ready to celebrate with us.", dressT1:"LADIES · COCKTAIL DRESS", dressT2:"GENTLEMEN · SUIT OR DRESS SHIRT", whereH:"Saturday, December 5th", map:"VIEW MAP", cal:"ADD TO CALENDAR",
+  whereK:"WHEN & WHERE", famN:"Dear Family", famGp:"WITH ALL OUR LOVE", famLbl:"WRITE YOUR NAME", famNeed:"Please write your name to confirm.", arr:"ARRIVAL 1:30 P.M.", recSub:"COCKTAIL PARTY", dressK:"DRESS CODE", dressH:"Cocktail", dressP:"After the ceremony, we want to share a special moment with you in an intimate celebration with family and friends.<br><br>Come elegant but comfortable, and get ready to celebrate with us.", dressT1:"LADIES · COCKTAIL DRESS", dressT2:"GENTLEMEN · SUIT OR DRESS SHIRT", whereH:"Saturday, December 5th", map:"VIEW MAP", cal:"ADD TO CALENDAR",
   verseBig:"“So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.”<small>MATTHEW 19:6</small>",
   rsvpK:"PLEASE RSVP", rsvpH:"Will you join us?",
   rsvpQ:"We would love to share this day with you. Please let us know if you will be able to attend.",
@@ -658,11 +666,12 @@ function applyLang(){
   const t=T[lang]; document.documentElement.lang=lang;
   document.querySelectorAll("[data-t]").forEach(el=>{const v=t[el.dataset.t]; if(typeof v==="string") el.innerHTML=v;});
   document.querySelectorAll("#langBtn b").forEach(b=>{b.style.opacity=b.dataset.l===lang?1:.45});
+  if(guest&&guest.family) guest.n=t.famN;
   const fl=$("#forLine"); if(fl) fl.textContent = guest ? guest.n : "Edny & Rishi";
   const p = guest?guest.p:1;
   $("#cardGuest .gn").textContent = guest?guest.n:"";
-  $("#cardGuest .gp").textContent = guest?(p>1?t.passN(p):t.pass1):"";
-  $("#ticketBlk").style.display = guest?"":"none";
+  $("#cardGuest .gp").textContent = guest?(guest.family?t.famGp:(p>1?t.passN(p):t.pass1)):"";
+  $("#ticketBlk").style.display = guest&&!guest.family?"":"none";
   if(guest){$("#tkName").textContent=guest.n;$("#tkN").textContent=p;$("#tkT").textContent=p>1?t.tkN:t.tk1;}
   $("#calBtn").href = calLink();
   if(!guest){ $("#askBox .q").textContent=t.noGuest; $("#askBox .choices").style.display="none"; }
@@ -881,18 +890,22 @@ function cd(){const ms=new Date(CONFIG.eventStart)-Date.now();const b=$("#count"
 cd();setInterval(cd,1000);
 
 /* =================== RSVP =================== */
-let hm=guest?guest.p:1, answer=store.get("er-rsvp-"+code);
-$("#yesBtn").onclick=()=>{ if(guest&&guest.p>1){$("#howmany").classList.add("show");$("#hmN").textContent=hm;} else submit("si",1); };
-$("#noBtn").onclick=()=>submit("no",0);
+let hm=guest?(guest.family?1:guest.p):1, answer=store.get("er-rsvp-"+code);
+if(guest&&guest.family) document.body.classList.add("family");
+function famOk(){if(!guest||!guest.family)return true;const v=$("#famInput").value.trim();const ok=v.length>=2;$("#famName").classList.toggle("bad",!ok);if(!ok){$("#famInput").focus();$("#famInput").placeholder=T[lang].famNeed;}return ok;}
+$("#yesBtn").onclick=()=>{ if(!famOk())return; if(guest&&guest.p>1){$("#howmany").classList.add("show");$("#hmN").textContent=hm;} else submit("si",1); };
+$("#noBtn").onclick=()=>{ if(famOk()) submit("no",0); };
 $("#minus").onclick=()=>{hm=Math.max(1,hm-1);$("#hmN").textContent=hm;};
 $("#plus").onclick=()=>{hm=Math.min(guest.p,hm+1);$("#hmN").textContent=hm;};
-$("#confirmYes").onclick=()=>submit("si",hm);
+$("#confirmYes").onclick=()=>{ if(famOk()) submit("si",hm); };
 $("#changeBtn").onclick=()=>{answer=null;renderThanks();$("#howmany").classList.remove("show");};
 async function submit(a,n){
   if(!guest) return;
   const box=$("#askBox");box.classList.add("saving");$("#err").classList.remove("show");
   try{
-    if(CONFIG.apiUrl&&!guest.demo){
+    if(CONFIG.apiUrl&&guest.family){
+      await api("rsvp_family_submit",{p_name:$("#famInput").value.trim(),p_answer:a,p_count:n,p_lang:lang});
+    } else if(CONFIG.apiUrl&&!guest.demo){
       const r=await fetch(CONFIG.apiUrl+"/rest/v1/rpc/rsvp_submit",{method:"POST",headers:{"Content-Type":"application/json",apikey:CONFIG.apiKey,Authorization:"Bearer "+CONFIG.apiKey},
         body:JSON.stringify({p_code:code,p_answer:a,p_count:n,p_lang:lang})});
       if(!r.ok) throw new Error(await r.text());
@@ -946,6 +959,7 @@ async function admin(key){
 /* keep the guest page in sync with the panel (e.g. answer changed or reset by the couple) */
 async function syncAnswer(){
   if(!guest||!CONFIG.apiUrl)return;
+  if(guest.family)return;
   if(guest.demo){answer=null;store.set("er-rsvp-"+code,null);renderThanks();return;}
   try{const st=await api("rsvp_status",{p_code:code});
     answer=st&&st.answer?{a:st.answer,n:st.attending,at:Date.now()}:null; store.set("er-rsvp-"+code,answer); renderThanks();}catch(e){}
